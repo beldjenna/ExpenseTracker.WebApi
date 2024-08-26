@@ -1,5 +1,7 @@
 
 using ExpenseTracker.Core.Entities;
+using ExpenseTracker.Data;
+using ExpenseTracker.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -26,6 +28,12 @@ namespace ExpenseTracker.Web
                 .EnableSensitiveDataLogging(); // should not be used in production, only for developement purpose
             }
              );
+
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
+
 
             // Configure the HTTP request pipeline. -- second part -- middleware configuration
 
